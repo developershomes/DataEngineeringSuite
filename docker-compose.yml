@@ -1,0 +1,39 @@
+  version: '3'
+
+  services:
+    spark:
+      build: Spark/.
+      networks:
+        - dbnet
+      ports:
+        - "8888:8888"
+        - "4040-4049:4040-4049"
+    postgis:
+      build: PostgreSQL/.
+      environment:
+        - POSTGRES_DB=postgres
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+      networks:
+        - dbnet
+      ports:
+        - "5432:5432"  
+    mysql:
+      build: MySQL/.
+      environment:
+        - MYSQL_ROOT_PASSWORD=mysql
+      networks:
+        - dbnet
+      ports:
+        - "3306:3306"   
+    mongo:
+      build: MongoDB/.
+      environment:
+        - MONGO_INITDB_ROOT_USERNAME=root
+        - MONGO_INITDB_ROOT_PASSWORD=mongodb
+      networks:
+        - dbnet
+      ports:
+        - "27017:27017"  
+  networks:
+    dbnet:
