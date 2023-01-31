@@ -7,3 +7,7 @@ Here, we are preparing Data Engineering Tool suite with using Docker compose. We
 Please find below blog on understading how to install all the components 
 
 https://developershome.blog/2023/01/30/data-engineering-tool-suite/
+
+Please also find below video which explains on this
+
+https://www.youtube.com/watch?v=FT2lM7d3EQI
