@@ -34,6 +34,25 @@
       networks:
         - dbnet
       ports:
-        - "27017:27017"  
+        - "27017:27017"
+    zookeeper:
+      image: docker.io/bitnami/zookeeper:3.8
+      networks:
+        - dbnet
+      ports:
+        - "2181:2181"
+      environment:
+        - ALLOW_ANONYMOUS_LOGIN=yes
+    kafka:
+      image: docker.io/bitnami/kafka:3.3
+      networks:
+        - dbnet
+      ports:
+        - "9092:9092"
+      environment:
+        - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+        - ALLOW_PLAINTEXT_LISTENER=yes
+      depends_on:
+        - zookeeper
   networks:
     dbnet:
